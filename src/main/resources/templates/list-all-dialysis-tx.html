@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+            crossorigin="anonymous">
+</head>
+<body>
+<br><br>
+
+<table class="table table-bordered table-striped">
+    <thead class="thread-dark">
+    <tr>
+        <th>Patient ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Action</th>
+    <tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="tempPatient: ${patients}">
+
+        <td th:text="${tempPatient.patientId}">
+        <td th:text="${tempPatient.firstName}">
+        <td th:text="${tempPatient.lastName}">
+        <td th:text="${tempPatient.dateOfBirth}">
+
+        <td>
+            <a th:href="@{/api/update(patientId=${tempPatient.id})}"
+               class="btn btn-info btn-sm">
+                Update</a>
+
+
+            <a th:href="@{/api/delete(patientId=${tempPatient.id})}"
+               class="btn btn-danger btn-sm"
+               onclick="if(!(confirm('Are  you sure you want to delete this employee?'))) return false">
+                Delete</a>
+
+            <a th:href="@{/api/record/form(patientId=${tempPatient.id})}"
+               class="btn btn-danger btn-sm">
+                Dialysis</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

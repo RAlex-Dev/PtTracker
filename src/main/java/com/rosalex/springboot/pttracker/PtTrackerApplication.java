@@ -11,5 +11,4 @@ public class PtTrackerApplication {
     }
 
 
-    // A comment
 }

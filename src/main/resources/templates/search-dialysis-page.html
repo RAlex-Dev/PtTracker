@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dialysis Records</title>
+</head>
+
+<body>
+<form action="#" th:action="@{/api/search}"
+      th:object="${patient}" method="POST">
+
+    <input type="hidden" th:field= "*{id}"/>
+
+    <input type="text" th:field="*{firstName}"
+           class="form-control mb-4 col-4 w-25" placeholder="First Name">
+
+    <input type="text" th:field="*{lastName}"
+           class="form-control mb-4 col-4 w-25" placeholder="Last Name">
+
+    <input type="text" th:field="*{patientId}"
+           class="form-control mb-4 col-4 w-25" placeholder="Patient Id">
+
+    <button type="submit" class="btn btn-info col-2">Search</button>
+</form>
+</body>
+
+</html>

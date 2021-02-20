@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+            crossorigin="anonymous">
+
+    <title>Save Tx</title>
+
+    <!-- reference css file -->
+    <link rel="stylesheet" th:href="@{/static/demo.css}" />
+</head>
+
+<body>
+<div class="container">
+    <h3>Patients</h3>
+    <hr>
+
+    <p class="h4 mb-4">Tx Entry</p>
+
+    <form action="#" th:action="@{/api/record/saveTx(parameter = ${patientId})}"
+          th:object="${currentTreatmentRecord}" method="POST">
+
+        <input type="hidden" th:field= "*{id}"/>
+        <input type="hidden" th:field= "*{time}"/>
+
+
+        <input type="text" th:field="*{bp}"
+               class="form-control mb-4 col-4 w-25" placeholder="Blood pressure">
+
+        <input type="text" th:field="*{notes}"
+               class="form-control mb-4 col-4 w-25" placeholder="Notes">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+    <hr>
+    <a th:href="@{/api/record/form(patientId=${patientId})}">Back</a>
+</div>
+</body>
+
+</html>
