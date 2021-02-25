@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -13,13 +12,28 @@
             crossorigin="anonymous">
 </head>
 
-<body style="padding: 20px">
-<h1 class="title">Dialysis</h1>
+
+
+<body>
+
+<div class="header">
+    <div class="nav-bar">
+        <a class="nav-btn" th:href="@{/api/list}" >Patient Directory</a>
+        <a class="nav-btn" th:href="@{/api/record/search-dialysis-page}">Record Search</a>
+        <a class="nav-btn" th:href="@{/api/qai/show-patient-list}">QAI Records</a>
+    </div>
+</div>
+
+<div class="container">
+    <img src="/logo.png" width="150" height="50">
+
+    <h1 class="title">Dialysis</h1>
 <a th:href="@{/api/list}">Back to Patient List</a>
 <br>
 <br>
-
+    <br>
 <div class="profile-align">
+    <br>
     <img src="/profile.bmp" width="200" height="200">
 
     <div class="patientInfoContainer">
@@ -148,6 +162,6 @@
 </div>
 
 <script src="/functions.js"></script>
-
+</div>
 </body>
 </html>

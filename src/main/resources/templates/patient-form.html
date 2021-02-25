@@ -6,6 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles.css">
 
     <!-- Bootstrap CSS -->
     <link
@@ -20,7 +21,18 @@
 </head>
 
 <body>
+
+<div class="header">
+    <div class="nav-bar">
+        <a class="nav-btn" th:href="@{/api/list}" >Patient Directory</a>
+        <a class="nav-btn" th:href="@{/api/record/search-dialysis-page}">Record Search</a>
+        <a class="nav-btn" th:href="@{/api/qai/show-patient-list}">QAI Records</a>
+    </div>
+</div>
+
 <div class="container">
+    <img src="/logo.png" width="150" height="50">
+    <br><br>
     <h3>Patients</h3>
     <hr>
 
@@ -38,7 +50,7 @@
                class="form-control mb-4 col-4 w-25" placeholder="Last Name">
 
         <input type="text" th:field="*{dateOfBirth}"
-               class="form-control mb-4 col-4 w-25" placeholder="Date of Birth">
+               class="form-control mb-4 col-4 w-25" placeholder="DOB (MMDDYYYY) Ex: 01011960">
 
         <button type="submit" class="btn btn-info col-2">Save</button>
     </form>

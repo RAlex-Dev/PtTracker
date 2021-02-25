@@ -20,24 +20,22 @@
 </head>
 
 <body>
-    <div class="header">
-        <div class="nav-bar">
-            <a class="nav-btn" th:href="@{/api/list}" >Patient Directory</a>
-            <a class="nav-btn" th:href="@{/api/record/search-dialysis-page}">Record Search</a>
-            <a class="nav-btn" th:href="@{/api/qai/show-patient-list}">QAI Records</a>
-        </div>
+<div class="header">
+    <div class="nav-bar">
+        <a class="nav-btn" th:href="@{/api/list}" >Patient Directory</a>
+        <a class="nav-btn" th:href="@{/api/record/search-dialysis-page}">Record Search</a>
+        <a class="nav-btn" th:href="@{/api/qai/show-patient-list}">QAI Records</a>
     </div>
+</div>
 
 <div class="container">
     <div class="profile-align">
         <img src="/logo.png" width="150" height="50">
-        </div>
-        <br>
+    </div>
     <br>
     <br>
     <!-- Add a button -->
-    <a th:href="@{/api/show-form}">
-    <button class="add-patient-btn"> Add a Patient </button></a>
+
     <br><br>
     <table class="table table-bordered table-striped">
         <thead class="thread-dark">
@@ -59,20 +57,9 @@
             <td th:text="${tempPatient.dateOfBirth}">
 
             <td>
-                <a th:href="@{/api/update(patientId=${tempPatient.id})}"
+                <a th:href="@{/api/qai/show-qai-list(patientId=${tempPatient.id})}"
                    class="btn btn-info btn-sm">
-                    Update</a>
-
-
-                <a th:href="@{/api/delete(patientId=${tempPatient.id})}"
-                   class="btn btn-danger btn-sm"
-                   onclick="if(!(confirm('Are  you sure you want to delete this employee?'))) return false">
-                    Delete</a>
-
-                <a th:href="@{/api/record/form(patientId=${tempPatient.id})}"
-                   class="btn btn-danger btn-sm">
-                    Dialysis</a>
-
+                    Nutrition</a>
             </td>
         </tr>
         </tbody>

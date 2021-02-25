@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles.css">
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+            crossorigin="anonymous">
+
+    <title>PT Tracker</title>
+
+    <!-- reference css file -->
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+<div class="header">
+    <div class="nav-bar">
+        <a class="nav-btn" th:href="@{/api/list}" >Patient Directory</a>
+        <a class="nav-btn" th:href="@{/api/record/search-dialysis-page}">Record Search</a>
+        <a class="nav-btn" th:href="@{/api/qai/show-patient-list}">QAI Records</a>
+    </div>
+</div>
+
+<div class="container">
+    <img src="/logo.png" width="150" height="50">
+    <br><br>
+    <div class="profile-align">
+        <img src="/profile.bmp" width="200" height="200">
+
+        <div class="patientInfoContainer">
+            <br>
+            <div class="profile-align"><label class="label" for="firstName">&nbsp; First Name: &nbsp; </label> <p id="firstName" th:text="${patient.firstName}"></div>
+            <div class="profile-align"><label class="label" for="lastName">&nbsp; Last Name: &nbsp;</label> <p id="lastName" th:text="${patient.lastName}"></div>
+            <div class="profile-align"><label class="label" for="patientId">&nbsp; Patient ID: &nbsp;</label> <p id="patientId" th:text="${patient.patientId}"></div>
+            <div class="profile-align"><label class="label" for="dob">&nbsp; DOB: &nbsp;</label> <p id="dob" th:text="${patient.dateOfBirth}"></div>
+
+        </div>
+    </div>
+
+    <!-- Add a button -->
+    <a th:href="@{/api/show-form}">
+    <br><br>
+    <table class="table table-bordered table-striped">
+        <thead class="thread-dark">
+        <tr>
+            <th>Month</th>
+            <th>Albumin</th>
+            <th>Creatinine</th>
+            <th>enPCR</th>
+            <th>Hemoglobin</th>
+            <th>IDWG</th>
+            <th>Phosphorus</th>
+            <th>Action</th>
+        <tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="record: ${qaiRecordList}">
+
+            <td th:text="${record.month}">
+            <td th:text="${record.albumin}">
+            <td th:text="${record.creatinine}">
+            <td th:text="${record.enPCR}">
+            <td th:text="${record.hemoglobin}">
+            <td th:text="${record.IDWG}">
+            <td th:text="${record.phosphorus}">
+
+            <td>
+                <a th:href="@{/api/qai/deleteQaiRecord(qaiRecordId=${record.getId()}, patientId=${patient.id})}"
+                   class="btn btn-info btn-sm">
+                    Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<br>
+<a th:href="@{/api/qai/nutri-graph(patientId=${patient.id}, variable=${'Albumin'})}">
+    <button class="add-patient-btn"> Compute </button></a>
+
+<br><br>
+<a th:href="@{/api/qai/show-patient-list}">Back to Patient List</a>
+</body>
+
+<footer>
+    <h1>Site by Roshan Alexander</h1>
+</footer>

@@ -15,7 +15,7 @@ public class Patient {
     private int id;
 
     @Column(name="patient_id")
-    private int patientId;
+    private Integer patientId;
 
     @Column(name="first_name")
     private String firstName;
@@ -29,6 +29,10 @@ public class Patient {
     @OneToMany(cascade= CascadeType.ALL, fetch=FetchType.LAZY,
     mappedBy = "patient")
     private List<DialysisTreatmentRecord> dialysisTreatmentRecord;
+
+    @OneToMany(cascade= CascadeType.ALL, fetch=FetchType.LAZY,
+            mappedBy = "patient")
+    private List<QAIRecord> qaiRecords;
 
     // constructors
 
@@ -53,11 +57,11 @@ public class Patient {
         this.id = id;
     }
 
-    public int getPatientId() {
+    public Integer getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+    public void setPatientId(Integer patientId) {
         this.patientId = patientId;
     }
 

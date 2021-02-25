@@ -25,14 +25,14 @@ public class DialysisServiceImpl implements DialysisService{
     }
 
     @Override
-    public DialysisTreatmentRecord getRecord(int id) {
+    public DialysisTreatmentRecord getRecord(int patientId) {
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate currentDate = LocalDate.now();
         dateTimeFormatter.format(currentDate);
         String currentDateString = currentDate.toString();
 
-        return dialysisRepository.findDialysisTreatmentRecord(id, currentDateString);
+        return dialysisRepository.findDialysisTreatmentRecord(patientId, currentDateString);
     }
 
 

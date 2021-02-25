@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 @Controller
 @RequestMapping("/api")
@@ -51,7 +52,9 @@ public class PatientController {
     @PostMapping("/save")
     public String savePatient(@ModelAttribute("patient") Patient patient){
 
-        patient.setPatientId(883774);
+        Random random = new Random();
+        int id = random.nextInt(1000000000);
+        patient.setPatientId(id);
         patientService.save(patient);
 
         return "redirect:/api/list";
@@ -74,4 +77,5 @@ public class PatientController {
 
         return "redirect:/api/list";
     }
+
 }

@@ -47,13 +47,15 @@ public class DialysisController {
             dialysisTreatmentRecord = new DialysisTreatmentRecord();
             dialysisTreatmentRecord.setPatient(patient);
 
-            // set Date only based on system settings
+            // set Date only, based on system settings
 
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
             LocalDate currentDate = LocalDate.now();
+            currentDate.getMonth();
             dateTimeFormatter.format(currentDate);
             String currentDateString = currentDate.toString();
             dialysisTreatmentRecord.setDate(currentDateString);
+            dialysisService.saveRecord(dialysisTreatmentRecord);
         }
 
         dialysisTreatmentRecord.setCurrentTreatmentDataList(dialysisService.getCurrentRecords(dialysisTreatmentRecord.getId()));
@@ -113,7 +115,6 @@ public class DialysisController {
                                        @RequestParam("parameter") int patientId, Model model){
 
         dialysisService.saveRecord(dialysisTreatmentRecord);
-        dialysisService.saveRecord(dialysisTreatmentRecord);
 
         model.addAttribute("dialysisTreatmentRecord", dialysisTreatmentRecord);
         dialysisTreatmentRecord.setCurrentTreatmentDataList(dialysisService.getCurrentRecords(dialysisTreatmentRecord.getId()));
@@ -128,7 +129,7 @@ public class DialysisController {
                          @RequestParam("parameter") int patientId, Model model){
 
         DialysisTreatmentRecord dialysisTreatmentRecord = dialysisService.getRecord(patientId);
-
+        System.out.println(patientId);
         currentTreatmentRecord.setDialysisTreatmentRecord(dialysisTreatmentRecord);
         dialysisService.saveTx(currentTreatmentRecord);
 
@@ -160,7 +161,6 @@ public class DialysisController {
         return "dialysis-form";
     }
 
-
     @GetMapping("/search-dialysis-page")
     public String searchDialysisRecords(Model model){
 
@@ -169,6 +169,48 @@ public class DialysisController {
         model.addAttribute("patient", patient);
 
         return "search-dialysis-page";
+    }
+
+    @PostMapping("/search")
+    public String getAllRecords(@ModelAttribute("patient") Patient patient, Model model){
+
+        List<DialysisTreatmentRecord> dialysisTreatmentRecords =
+        dialysisService.getRecords(patient.getFirstName(), patient.getLastName(), patient.getPatientId());
+
+        if(dialysisTreatmentRecords == null){
+            // throw exception here
+        }
+
+        return "redirect:/api/record/all-dialysis-treatments?patientId=" + dialysisTreatmentRecords.get(0).getPatient().getId();
+
+    }
+
+    @GetMapping("/all-dialysis-treatments")
+    public String displayAllDialysisRecords(@RequestParam("patientId") int id, Model model){
+
+        Patient patient = patientService.findById(id);
+
+        List<DialysisTreatmentRecord> dialysisTreatmentRecords =
+                dialysisService.getRecords(patient.getFirstName(), patient.getLastName(), patient.getPatientId());
+
+        model.addAttribute("dialysisTreatmentRecords", dialysisTreatmentRecords);
+        model.addAttribute("patient", patient);
+
+        return "/list-all-dialysis-tx";
+    }
+
+    @GetMapping("/all-daily-treatments")
+    public String displayAllDailyTreatment(@RequestParam("dialysisTreatmentRecordId") int dialysisTreatmentRecordId, @RequestParam("patientId") int id, Model model){
+
+        dialysisService.getRecord(dialysisTreatmentRecordId);
+        Patient patient = patientService.findById(id);
+
+        List<CurrentTreatmentRecord> currentTreatmentRecordList = dialysisService.getCurrentRecords(dialysisTreatmentRecordId);
+
+        model.addAttribute("currentTreatmentRecordList", currentTreatmentRecordList);
+        model.addAttribute("patient", patient);
+
+        return "list-all-daily-tx";
     }
 
 }

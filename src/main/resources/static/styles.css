@@ -1,3 +1,45 @@
+.header {
+    background-color: #2661ff;
+    margin: 0;
+    justify-content: center;
+    display: flex;
+
+}
+
+.nav-btn{
+    color: #dddddd;
+    text-decoration: none;
+    margin-right: 50px;
+}
+
+.app-name{
+    justify-content: left;
+}
+
+.app-name:active{
+
+}
+
+.nav-btn:hover{
+    color: black;
+    cursor: pointer;
+}
+
+.header h3 {
+    margin: 0;
+    padding-left: 5px;
+}
+
+.html{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .title{
     font-family: sans-sarif;
     color: black;
@@ -9,7 +51,7 @@
 }
 
 .add-patient-btn{
-    background-color: #005eff;
+    background-color: #0044ff;
     color: #dddddd;
 }
 
@@ -55,15 +97,24 @@
 .dropdown {
     display: inline-block;
     float: right;
-    padding-right: 120px;
+    margin-right: 120px;
+
+}
+
+.dropdown-variable-menu {
+    display: inline-block;
+    float: left;
+    margin-left: 120px;
+
 }
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: #005eff;
+    background-color: #929292;
     color: white;
     font-size: 16px;
     border: none;
+
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -92,3 +143,22 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #013ec3;}
+
+footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    background-color: #2661ff;
+}
+footer h1{
+    margin-top: 10px ;
+    margin-left: 10px;
+    font-size: 8px;
+}
+
+/* IE 6 */
+* html footer {
+    position:absolute;
+}

@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Dialysis Records</title>
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+            crossorigin="anonymous">
 </head>
 
 <body>
-<form action="#" th:action="@{/api/search}"
+
+<div class="header">
+    <div class="nav-bar">
+        <a class="nav-btn" th:href="@{/api/list}" >Patient Directory</a>
+        <a class="nav-btn" th:href="@{/api/record/search-dialysis-page}">Record Search</a>
+        <a class="nav-btn" th:href="@{/api/qai/show-patient-list}">QAI Records</a>
+    </div>
+</div>
+
+<div class="container">
+    <img src="/logo.png" width="150" height="50">
+    <br><br><br>
+
+<form action="#" th:action="@{/api/record/search}"
       th:object="${patient}" method="POST">
 
     <input type="hidden" th:field= "*{id}"/>
@@ -22,6 +43,11 @@
 
     <button type="submit" class="btn btn-info col-2">Search</button>
 </form>
-</body>
+    <br><br>
+    <a th:href="@{/api/list}">Back to Patient List</a>
 
+</div>
+
+</body>
+<br><br>
 </html>

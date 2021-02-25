@@ -6,6 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles.css">
 
     <!-- Bootstrap CSS -->
     <link
@@ -21,11 +22,20 @@
 </head>
 
 <body>
-<div class="container">
-    <h3>Patients</h3>
-    <hr>
+<div class="header">
+    <div class="nav-bar">
+        <a class="nav-btn" th:href="@{/api/list}" >Patient Directory</a>
+        <a class="nav-btn" th:href="@{/api/record/search-dialysis-page}">Record Search</a>
+        <a class="nav-btn" th:href="@{/api/qai/show-patient-list}">QAI Records</a>
+    </div>
+</div>
 
-    <p class="h4 mb-4">Tx Entry</p>
+<div class="container">
+    <img src="/logo.png" width="150" height="50">
+    <br><br><br>
+
+    <h3>Treatment entry</h3>
+    <hr>
 
     <form action="#" th:action="@{/api/record/saveTx(parameter = ${patientId})}"
           th:object="${currentTreatmentRecord}" method="POST">

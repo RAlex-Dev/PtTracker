@@ -3,52 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/styles.css">
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
             crossorigin="anonymous">
 </head>
+
 <body>
+
+<div class="header">
+    <div class="nav-bar">
+        <a class="nav-btn" th:href="@{/api/list}" >Patient Directory</a>
+        <a class="nav-btn" th:href="@{/api/record/search-dialysis-page}">Record Search</a>
+        <a class="nav-btn" th:href="@{/api/qai/show-patient-list}">QAI Records</a>
+    </div>
+</div>
+
+<div class="container">
+    <img src="/logo.png" width="150" height="50">
+    <br><br><br>
+    <div class="profile-align">
+    <img src="/profile.bmp" width="200" height="200">
+
+<div class="patientInfoContainer">
+    <br>
+    <div class="profile-align"><label class="label" for="firstName">&nbsp; First Name: &nbsp; </label> <p id="firstName" th:text="${patient.firstName}"></div>
+    <div class="profile-align"><label class="label" for="lastName">&nbsp; Last Name: &nbsp;</label> <p id="lastName" th:text="${patient.lastName}"></div>
+    <div class="profile-align"><label class="label" for="patientId">&nbsp; Patient ID: &nbsp;</label> <p id="patientId" th:text="${patient.patientId}"></div>
+    <div class="profile-align"><label class="label" for="dob">&nbsp; DOB: &nbsp;</label> <p id="dob" th:text="${patient.dateOfBirth}"></div>
+
+</div>
+</div>
+<hr>
 <br><br>
 
 <table class="table table-bordered table-striped">
     <thead class="thread-dark">
     <tr>
-        <th>Patient ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Date of Birth</th>
-        <th>Action</th>
+        <th>Date</th>
+        <th>Pre-Weight</th>
+        <th>BP Standing</th>
+        <th>BP Sitting</th>
+        <th>Post-Weight</th>
+        <th>Final Sitting BP</th>
+        <th>Final Standing BP</th>
+        <th>Final Temp</th>
+        <th>Actions</th>
+
     <tr>
     </thead>
 
     <tbody>
-    <tr th:each="tempPatient: ${patients}">
+    <tr th:each="dialysisRecord: ${dialysisTreatmentRecords}">
 
-        <td th:text="${tempPatient.patientId}">
-        <td th:text="${tempPatient.firstName}">
-        <td th:text="${tempPatient.lastName}">
-        <td th:text="${tempPatient.dateOfBirth}">
+        <td th:text="${dialysisRecord.date}">
+        <td th:text="${dialysisRecord.preWeight}">
+        <td th:text="${dialysisRecord.bpStanding}">
+        <td th:text="${dialysisRecord.bpSitting}">
+        <td th:text="${dialysisRecord.postWeight}">
+        <td th:text="${dialysisRecord.finalSittingBp}">
+        <td th:text="${dialysisRecord.finalStandingBp}">
+        <td th:text="${dialysisRecord.temperature}">
 
         <td>
-            <a th:href="@{/api/update(patientId=${tempPatient.id})}"
+            <a th:href="@{/api/record/all-daily-treatments(dialysisTreatmentRecordId=${dialysisRecord.id}, patientId=${patient.id})}"
                class="btn btn-info btn-sm">
-                Update</a>
-
-
-            <a th:href="@{/api/delete(patientId=${tempPatient.id})}"
-               class="btn btn-danger btn-sm"
-               onclick="if(!(confirm('Are  you sure you want to delete this employee?'))) return false">
-                Delete</a>
-
-            <a th:href="@{/api/record/form(patientId=${tempPatient.id})}"
-               class="btn btn-danger btn-sm">
-                Dialysis</a>
+                TX observations</a>
         </td>
     </tr>
     </tbody>
 </table>
+<a th:href="@{/api/record/search-dialysis-page}">Back to Search</a>
+</div>
 </div>
 </body>
 </html>

@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 public interface DialysisRepository extends JpaRepository<DialysisTreatmentRecord, Integer> {
 
-@Query("FROM DialysisTreatmentRecord r where r.patient.id = :patientId AND r.date = :currentDate")
-DialysisTreatmentRecord findDialysisTreatmentRecord(@Param("patientId") int patientId, @Param("currentDate") String currentDate);
+@Query("FROM DialysisTreatmentRecord r where r.patient.id = :patientId AND r.date = :currentDateString")
+DialysisTreatmentRecord findDialysisTreatmentRecord(@Param("patientId") Integer patientId, @Param("currentDateString") String currentDateString);
 
 @Query("FROM DialysisTreatmentRecord r where r.patient.firstName = :firstName AND r.patient.lastName = :lastName AND r.patient.patientId = :patientId")
 List<DialysisTreatmentRecord> findDialysisTreatmentRecords(@Param("firstName") String firstName,
-                                                           @Param("lastName") String lastName, @Param("patientId") int patientId);
+                                                           @Param("lastName") String lastName, @Param("patientId") Integer patientId);
 }
