@@ -1,7 +1,7 @@
-package com.rosalex.springboot.pttracker.service;
+package com.rosalex.pttracker.service;
 
-import com.rosalex.springboot.pttracker.entity.QAIRecord;
-import com.rosalex.springboot.pttracker.repository.QAIRepository;
+import com.rosalex.pttracker.repository.QAIRepository;
+import com.rosalex.pttracker.entity.QAIRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

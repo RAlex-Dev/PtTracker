@@ -1,6 +1,6 @@
-package com.rosalex.springboot.pttracker.repository;
+package com.rosalex.pttracker.repository;
 
-import com.rosalex.springboot.pttracker.entity.QAIRecord;
+import com.rosalex.pttracker.entity.QAIRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

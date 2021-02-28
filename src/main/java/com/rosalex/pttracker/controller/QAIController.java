@@ -1,18 +1,15 @@
-package com.rosalex.springboot.pttracker.controller;
+package com.rosalex.pttracker.controller;
 
-import com.rosalex.springboot.pttracker.Utilities;
-import com.rosalex.springboot.pttracker.entity.Patient;
-import com.rosalex.springboot.pttracker.entity.QAIRecord;
-import com.rosalex.springboot.pttracker.service.PatientService;
-import com.rosalex.springboot.pttracker.service.QAIService;
+import com.rosalex.pttracker.Utilities;
+import com.rosalex.pttracker.entity.Patient;
+import com.rosalex.pttracker.entity.QAIRecord;
+import com.rosalex.pttracker.service.PatientService;
+import com.rosalex.pttracker.service.QAIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.*;
 
 @Controller

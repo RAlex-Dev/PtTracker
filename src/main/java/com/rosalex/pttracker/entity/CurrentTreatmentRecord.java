@@ -1,4 +1,4 @@
-package com.rosalex.springboot.pttracker.entity;
+package com.rosalex.pttracker.entity;
 
 import javax.persistence.*;
 

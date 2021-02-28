@@ -1,7 +1,7 @@
-package com.rosalex.springboot.pttracker.service;
+package com.rosalex.pttracker.service;
 
-import com.rosalex.springboot.pttracker.entity.Patient;
-import com.rosalex.springboot.pttracker.entity.QAIRecord;
+
+import com.rosalex.pttracker.entity.Patient;
 
 import java.util.List;
 

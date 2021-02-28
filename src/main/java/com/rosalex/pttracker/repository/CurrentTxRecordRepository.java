@@ -1,6 +1,6 @@
-package com.rosalex.springboot.pttracker.repository;
+package com.rosalex.pttracker.repository;
 
-import com.rosalex.springboot.pttracker.entity.CurrentTreatmentRecord;
+import com.rosalex.pttracker.entity.CurrentTreatmentRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

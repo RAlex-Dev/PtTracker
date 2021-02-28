@@ -1,7 +1,7 @@
-package com.rosalex.springboot.pttracker.controller;
+package com.rosalex.pttracker.controller;
 
-import com.rosalex.springboot.pttracker.entity.Patient;
-import com.rosalex.springboot.pttracker.service.PatientService;
+import com.rosalex.pttracker.entity.Patient;
+import com.rosalex.pttracker.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,20 +1,15 @@
-package com.rosalex.springboot.pttracker.controller;
+package com.rosalex.pttracker.controller;
 
-import com.rosalex.springboot.pttracker.entity.CurrentTreatmentRecord;
-import com.rosalex.springboot.pttracker.entity.DialysisTreatmentRecord;
-import com.rosalex.springboot.pttracker.entity.Patient;
-import com.rosalex.springboot.pttracker.service.DialysisService;
-import com.rosalex.springboot.pttracker.service.DialysisServiceImpl;
-import com.rosalex.springboot.pttracker.service.PatientService;
+import com.rosalex.pttracker.entity.Patient;
+import com.rosalex.pttracker.service.PatientService;
+import com.rosalex.pttracker.entity.CurrentTreatmentRecord;
+import com.rosalex.pttracker.entity.DialysisTreatmentRecord;
+import com.rosalex.pttracker.service.DialysisService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -55,7 +50,6 @@ public class DialysisController {
             dateTimeFormatter.format(currentDate);
             String currentDateString = currentDate.toString();
             dialysisTreatmentRecord.setDate(currentDateString);
-            dialysisService.saveRecord(dialysisTreatmentRecord);
         }
 
         dialysisTreatmentRecord.setCurrentTreatmentDataList(dialysisService.getCurrentRecords(dialysisTreatmentRecord.getId()));
@@ -91,7 +85,7 @@ public class DialysisController {
         }
 
         currentTreatmentRecord.setDialysisTreatmentRecord(dialysisTreatmentRecord);
-        dialysisService.saveTx(currentTreatmentRecord);
+    //    dialysisService.saveTx(currentTreatmentRecord);
         dialysisTreatmentRecord.setCurrentTreatmentDataList(dialysisService.getCurrentRecords(dialysisTreatmentRecord.getId()));
 
         // set time based on system settings
@@ -129,6 +123,10 @@ public class DialysisController {
                          @RequestParam("parameter") int patientId, Model model){
 
         DialysisTreatmentRecord dialysisTreatmentRecord = dialysisService.getRecord(patientId);
+
+        if(dialysisTreatmentRecord == null){
+            dialysisTreatmentRecord = new DialysisTreatmentRecord();
+        }
         System.out.println(patientId);
         currentTreatmentRecord.setDialysisTreatmentRecord(dialysisTreatmentRecord);
         dialysisService.saveTx(currentTreatmentRecord);
@@ -195,6 +193,7 @@ public class DialysisController {
 
         model.addAttribute("dialysisTreatmentRecords", dialysisTreatmentRecords);
         model.addAttribute("patient", patient);
+
 
         return "/list-all-dialysis-tx";
     }

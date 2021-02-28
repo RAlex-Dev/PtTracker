@@ -1,10 +1,12 @@
-package com.rosalex.springboot.pttracker.entity;
+package com.rosalex.pttracker.entity;
 
 import javax.persistence.*;
 import java.util.List;
 
+
 @Entity
 @Table(name="patient")
+
 public class Patient {
 
     // fields
@@ -26,7 +28,7 @@ public class Patient {
     @Column(name="date_of_birth")
     private String dateOfBirth;
 
-    @OneToMany(cascade= CascadeType.ALL, fetch=FetchType.LAZY,
+    @OneToMany(cascade= CascadeType.ALL, fetch= FetchType.LAZY,
     mappedBy = "patient")
     private List<DialysisTreatmentRecord> dialysisTreatmentRecord;
 
@@ -89,6 +91,7 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
     }
 
+
     public List<DialysisTreatmentRecord> getDialysisTreatmentRecord() {
         return dialysisTreatmentRecord;
     }
@@ -96,4 +99,6 @@ public class Patient {
     public void setDialysisTreatmentRecord(List<DialysisTreatmentRecord> dialysisTreatmentRecord) {
         this.dialysisTreatmentRecord = dialysisTreatmentRecord;
     }
+
+
 }

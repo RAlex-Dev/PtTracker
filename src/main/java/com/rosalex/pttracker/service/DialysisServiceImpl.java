@@ -1,10 +1,9 @@
-package com.rosalex.springboot.pttracker.service;
+package com.rosalex.pttracker.service;
 
-import com.rosalex.springboot.pttracker.entity.CurrentTreatmentRecord;
-import com.rosalex.springboot.pttracker.entity.DialysisTreatmentRecord;
-import com.rosalex.springboot.pttracker.entity.Patient;
-import com.rosalex.springboot.pttracker.repository.CurrentTxRecordRepository;
-import com.rosalex.springboot.pttracker.repository.DialysisRepository;
+import com.rosalex.pttracker.entity.CurrentTreatmentRecord;
+import com.rosalex.pttracker.entity.DialysisTreatmentRecord;
+import com.rosalex.pttracker.repository.CurrentTxRecordRepository;
+import com.rosalex.pttracker.repository.DialysisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

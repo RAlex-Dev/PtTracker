@@ -1,6 +1,6 @@
-package com.rosalex.springboot.pttracker;
+package com.rosalex.pttracker;
 
-import com.rosalex.springboot.pttracker.entity.QAIRecord;
+import com.rosalex.pttracker.entity.QAIRecord;
 
 import java.util.Calendar;
 import java.util.HashMap;

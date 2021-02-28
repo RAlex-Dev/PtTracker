@@ -1,8 +1,8 @@
-package com.rosalex.springboot.pttracker.service;
+package com.rosalex.pttracker.service;
 
-import com.rosalex.springboot.pttracker.entity.Patient;
-import com.rosalex.springboot.pttracker.entity.QAIRecord;
-import com.rosalex.springboot.pttracker.repository.PatientRepository;
+
+import com.rosalex.pttracker.entity.Patient;
+import com.rosalex.pttracker.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PatientServiceImpl implements PatientService {
+public class PatientServiceImpl implements PatientService{
 
     private PatientRepository patientRepository;
 

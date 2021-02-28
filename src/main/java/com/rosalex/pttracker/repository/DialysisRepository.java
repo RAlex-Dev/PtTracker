@@ -1,7 +1,6 @@
-package com.rosalex.springboot.pttracker.repository;
+package com.rosalex.pttracker.repository;
 
-import com.rosalex.springboot.pttracker.entity.DialysisTreatmentRecord;
-import com.rosalex.springboot.pttracker.entity.Patient;
+import com.rosalex.pttracker.entity.DialysisTreatmentRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

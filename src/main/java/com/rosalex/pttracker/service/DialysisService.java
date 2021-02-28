@@ -1,9 +1,7 @@
-package com.rosalex.springboot.pttracker.service;
+package com.rosalex.pttracker.service;
 
-import com.rosalex.springboot.pttracker.entity.CurrentTreatmentRecord;
-import com.rosalex.springboot.pttracker.entity.DialysisTreatmentRecord;
-import com.rosalex.springboot.pttracker.entity.Patient;
-import org.springframework.stereotype.Service;
+import com.rosalex.pttracker.entity.CurrentTreatmentRecord;
+import com.rosalex.pttracker.entity.DialysisTreatmentRecord;
 
 import java.util.List;
 
